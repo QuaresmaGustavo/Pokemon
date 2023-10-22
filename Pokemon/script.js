@@ -8,16 +8,25 @@ $(document).ready(function () {
             method: 'GET',
             dataType: 'json',
             success: function (dados) {
+                var idbloco = dados.name;
+                var close = dados.name+"close";
                 var inforPokemon = `
-                <div id="bloco">
+                <div id="${idbloco}">
+                    <div id="cabecalho">
                     <span id="nomePokemon">${dados.name}</span>
+                    <button type="button" id="${close}"><span class="material-symbols-outlined">close</span></button>
+                    </div>
                     <img src="${dados.sprites.other["official-artwork"].front_default}" alt="Img_Pokemon" id="img_Pokemon"/>
                 
                     <div class="informacao">
-                        <p id="typePokemon"><span id="tipo">Tipo: ${dados.types[0].type.name}</span></p>
-                        <p id="heightPokemon"><span id="altura">Altura: ${dados.height}</span></p>
-                        <p id="WeightPokemon"><span id="largura">Largura: ${dados.weight}</span></p>
+                        <h3>Detalhes</h3>
+                        <div id="detalhesPokemon">
+                            <p id="typePokemon"><span id="tipo">Tipo: ${dados.types[0].type.name}</span></p>
+                            <p id="heightPokemon"><span id="altura">Altura: ${dados.height}</span></p>
+                            <p id="WeightPokemon"><span id="peso">Peso: ${dados.weight}</span></p>
+                        </div>
 
+                        <h3>Status</h3>
                         <div id="statusPokemon">
                             <p class="status">
                                 <span>${dados.stats[0].stat.name}: <span>${dados.stats[0].base_stat}</span></span>
@@ -49,6 +58,10 @@ $(document).ready(function () {
                 console.log(dados);
 
                 $("#body").append(inforPokemon);
+
+                $('#'+close).on('click', ()=>{
+                    $('#'+idbloco).remove();
+                })
             }
         })
     })
