@@ -1,0 +1,69 @@
+*{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: bisque;
+}
+
+#bloco{
+    position: absolute;
+    top: 12%;
+    left: 32%;
+    width: 40em;
+    height: 44em;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 12px;
+    box-shadow: 1px 1px 8px black;
+    background-color: rgb(252, 204, 145);
+}
+
+p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.0em;
+    width: 100%;
+    height: 2em;
+}
+
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 2em;
+    margin-bottom: 1em;
+}
+
+#pesquisa{
+    width: 60%;
+    height: 2em;
+    margin-right: 1em;
+    border: 1.6px solid rgb(199, 161, 115);
+    border-radius: 4px;
+}
+
+button{
+    width: 4em;
+    height: 2em;
+}
+
+.informacao{
+    position: relative;
+    top: 17em;
+    width: 100%;
+    height: 18.5em;
+    border-radius: 0 0 8px 8px;
+    background-color: rgb(255, 255, 255);
+}
+
+img{
+    width: 100px;
+    height: 100px;
+}
