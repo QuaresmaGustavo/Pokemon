@@ -76,7 +76,7 @@ $(document).ready(function () {
                 let intervalo = setInterval(() => {
                     var error = `<span id="error">nome pesquisado invalido!!!</span>`;
 
-                    $('.search').append(error);
+                    $('.container').append(error);
 
                     clearInterval(intervalo);
                 }, 1000);
