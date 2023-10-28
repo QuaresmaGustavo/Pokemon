@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 *{
     box-sizing: border-box;
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Press Start 2P';
+    font-size: 1rem;
+    text-decoration: uppercase;
 }
 
 body{
@@ -11,36 +16,57 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-color: bisque;
+    background-image: url('./Imagens/cenario.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /*Barra de Pesquisa*/
 .search{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    width: 38rem;
     height: 2rem;
-    margin-top: 2rem;
+    margin: 2rem auto;
 }
 
 #pesquisa{
-    width: 20%;
-    height: 2rem;
+    position: relative;
+    top: -0.4rem;
+    width: 26rem;
     margin-right: 1rem;
-    border: 1.6px solid rgb(199, 161, 115);
+    border: 1.6px solid rgb(0, 0, 0);
     border-radius: 4px;
     padding: 4px;
+    font-size: 0.8rem;
 }
 
-button{
+#btn{
     width: 4rem;
-    height: 2rem;
+    font-size: 0.6rem;
+    padding-top: 0.2rem;
 }
 
-/*Informações Bloco Pokemon*/
+#error{
+    position: relative;
+    top: 1rem;
+    width: 30rem;
+    height: 1.6rem;
+    margin: 2rem;
+    color: rgb(255, 0, 0);
+    animation: pulsacao ease-in 1s;
+}
+
+@keyframes pulsacao {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }  
+}
+
+/*Elementos Principais Bloco Pokemon*/
 .material-symbols-outlined {
-    height: 0rem;
   font-variation-settings:
   'FILL' 0,
   'wght' 800,
@@ -48,12 +74,7 @@ button{
   'opsz' 24
 }
 
-.material-symbols-outlined:hover{
-    transition: 300ms;
-    transform:scaleX(10px);
-}
-
-#bloco{
+.bloco{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -66,15 +87,7 @@ button{
     border-radius: 12px;
     box-shadow: 1px -1px 6px 1px rgba(0, 0, 0, 0.5);
     background-color: rgb(253, 59, 59);
-}
-
-#nomePokemon{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.0rem;
-    width: 100%;
-    height: 2rem;
+    animation: pulsacao ease-in 500ms;
 }
 
 img{

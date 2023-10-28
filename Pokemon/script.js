@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $('#btn').on('click', () => {
         var pesq = $("#pesquisa").val();
+        $('#error').remove();
 
         var link = 'https://pokeapi.co/api/v2/pokemon/' + pesq;
         $.ajax({
@@ -9,7 +10,12 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (dados) {
                 var idbloco = dados.name;
-                var close = dados.name+"close";
+
+                if ('#' + idbloco) {
+                    $('#' + idbloco).remove();
+                }
+
+                var close = dados.name + "close";
                 var inforPokemon = `
                 <div id="${idbloco}">
                     <div id="cabecalho">
@@ -21,47 +27,59 @@ $(document).ready(function () {
                     <div class="informacao">
                         <h3>Detalhes</h3>
                         <div id="detalhesPokemon">
-                            <p id="typePokemon"><span id="tipo">Tipo: ${dados.types[0].type.name}</span></p>
-                            <p id="heightPokemon"><span id="altura">Altura: ${dados.height}</span></p>
-                            <p id="WeightPokemon"><span id="peso">Peso: ${dados.weight}</span></p>
+                            <p id="typePokemon"><span id="tipo">Tipo - ${dados.types[0].type.name}</span></p>
+                            <p id="heightPokemon"><span id="altura">Altura - ${dados.height}</span></p>
+                            <p id="WeightPokemon"><span id="peso">Peso - ${dados.weight}</span></p>
                         </div>
 
                         <h3>Status</h3>
                         <div id="statusPokemon">
                             <p class="status">
-                                <span>${dados.stats[0].stat.name}: <span>${dados.stats[0].base_stat}</span></span>
+                                <span>${dados.stats[0].stat.name} - <span>${dados.stats[0].base_stat}</span></span>
                             </p>
 
                             <p class="status">
-                                <span>${dados.stats[1].stat.name}: <span>${dados.stats[1].base_stat}</span></span>
+                                <span>${dados.stats[1].stat.name} - <span>${dados.stats[1].base_stat}</span></span>
                             </p>
 
                             <p class="status">
-                                <span>${dados.stats[2].stat.name}: <span>${dados.stats[2].base_stat}</span></span>
+                                <span>${dados.stats[2].stat.name} - <span>${dados.stats[2].base_stat}</span></span>
                             </p>
 
                             <p class="status">
-                                <span>${dados.stats[3].stat.name}: <span>${dados.stats[3].base_stat}</span></span>
+                                <span>${dados.stats[3].stat.name} - <span>${dados.stats[3].base_stat}</span></span>
                             </p>
 
                             <p class="status">
-                                <span>${dados.stats[4].stat.name}: <span>${dados.stats[4].base_stat}</span></span> 
+                                <span>${dados.stats[4].stat.name} - <span>${dados.stats[4].base_stat}</span></span> 
                             </p>
 
                             <p class="status">
-                                <span>${dados.stats[5].stat.name}: <span>${dados.stats[5].base_stat}</span></span>
+                                <span>${dados.stats[5].stat.name} - <span>${dados.stats[5].base_stat}</span></span>
                             </p>
                         </div>
                     </div>
                 </div>`
 
-                console.log(dados);
+                $('#body').append(inforPokemon);
 
-                $("#body").append(inforPokemon);
-
-                $('#'+close).on('click', ()=>{
-                    $('#'+idbloco).remove();
+                $('#' + close).on('click', () => {
+                    $('#' + idbloco).remove();
                 })
+
+                $('#' + idbloco).addClass("bloco");
+                $('#' + close).addClass("close");
+            },
+
+            error: function pesqErro() {
+
+                let intervalo = setInterval(() => {
+                    var error = `<span id="error">nome pesquisado invalido!!!</span>`;
+
+                    $('.search').append(error);
+
+                    clearInterval(intervalo);
+                }, 1000);
             }
         })
     })

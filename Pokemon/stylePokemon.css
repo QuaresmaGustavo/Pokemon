@@ -1,18 +1,34 @@
+/* Informações do Pokemon */
 #cabecalho{
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 16fr 1fr;
     height: 2.6rem;
+    padding: 4px;
+    border-radius: 8px 8px 0 0;
+    background-color: rgba(252, 255, 67, 0.932);
+    box-shadow: 1px 1px 6px 0.6px rgba(0, 0, 0, 0.5);
+}
+
+#nomePokemon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    width: 100%;
+    height: 2rem;
+    font-weight: bold;
+}
+
+.close{
+    background: none;
+    border: none;
+    padding-top: 0.4rem;
 }
 
 h3{
     height: 1.6rem;
     border-bottom: 1px solid rgba(0,0,0,0.5);
     margin-bottom: 0.6rem;
-}
-
-#close{
-    background: none;
-    border: none;
 }
 
 .informacao p{
@@ -30,11 +46,12 @@ h3{
     grid-template-columns: repeat(2, 1fr);
     gap: 0 2rem;
     height: 8rem;
+    font-size: 0.6rem;
 }
 
 #statusPokemon{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0 2rem;
+    gap: 0 1.8rem;
     height: 10rem;
 }
